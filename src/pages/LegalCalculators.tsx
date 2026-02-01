@@ -1,5 +1,38 @@
 import { Link } from 'react-router-dom';
 
+const calculators = [
+  {
+    name: 'Unpaid Wages Estimator',
+    description: 'Estimate potential unpaid wages for overtime, minimum wage violations, or final pay issues.',
+    url: 'https://unpaid-wages-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Unpaid Wages Eligibility Checker',
+    description: 'Evaluate whether your situation may qualify for an unpaid wages claim based on employment factors and timing.',
+    url: 'https://unpaid-wages-eligibility-checker-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Overtime Eligibility Checker',
+    description: 'Determine whether you may be entitled to overtime pay based on job duties and exemption status.',
+    url: 'https://overtime-eligibility-checker-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Exempt vs Non-Exempt Checker',
+    description: 'Evaluate factors that determine whether a position is exempt from overtime requirements.',
+    url: 'https://exempt-vs-nonexempt-checker-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Contractor vs Employee Checker',
+    description: 'Evaluate factors that distinguish employees from independent contractors for classification purposes.',
+    url: 'https://contractor-vs-employee-checker-2026.vercel.app',
+    available: true
+  }
+];
+
 export default function LegalCalculators() {
   return (
     <>
@@ -16,6 +49,10 @@ export default function LegalCalculators() {
       <div className="page-content">
         <Link to="/" className="back-link">&larr; Back to Home</Link>
 
+        <div className="info-note">
+          Calculators open on their own dedicated sites for accuracy and performance.
+        </div>
+
         <h2>Educational Legal Estimators</h2>
         <p>
           Legal matters can be complex and confusing. Our legal calculators provide educational
@@ -24,28 +61,23 @@ export default function LegalCalculators() {
         </p>
 
         <h2>Available Calculators</h2>
-        <ul className="calculator-list">
-          <li>
-            <strong>Unpaid Wages Estimator</strong>
-            <span>Estimate potential unpaid wages for overtime, minimum wage violations, or final pay issues.</span>
-          </li>
-          <li>
-            <strong>Unpaid Wages Eligibility Checker</strong>
-            <span>Evaluate whether your situation may qualify for an unpaid wages claim based on employment factors and timing.</span>
-          </li>
-          <li>
-            <strong>Overtime Eligibility Checker</strong>
-            <span>Determine whether you may be entitled to overtime pay based on job duties and exemption status.</span>
-          </li>
-          <li>
-            <strong>Statute of Limitations Calculator</strong>
-            <span>Understand general timeframes for filing various types of legal claims in your state.</span>
-          </li>
-          <li>
-            <strong>Employee vs Contractor Checker</strong>
-            <span>Evaluate factors that distinguish employees from independent contractors for classification purposes.</span>
-          </li>
-        </ul>
+        <div className="calculator-list">
+          {calculators.map((calc) => (
+            <a
+              key={calc.name}
+              href={calc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`calculator-card ${!calc.available ? 'coming-soon' : ''}`}
+            >
+              <strong>{calc.name}</strong>
+              <span>{calc.description}</span>
+              <span className="cta">
+                {calc.available ? 'Open Calculator →' : 'Coming Soon'}
+              </span>
+            </a>
+          ))}
+        </div>
 
         <h2>Understanding Wage and Employment Law</h2>
         <p>

@@ -304,25 +304,79 @@ a:hover { text-decoration: underline; }
   list-style: none;
   padding: 0;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
-.calculator-list li {
+.calculator-card {
+  display: block;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: var(--space-5);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
 }
 
-.calculator-list li strong {
+.calculator-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+.calculator-card strong {
   display: block;
   color: var(--color-text);
-  margin-bottom: var(--space-1);
+  font-size: 1.0625rem;
+  margin-bottom: var(--space-2);
 }
 
-.calculator-list li span {
+.calculator-card span {
+  display: block;
   font-size: 0.875rem;
   color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.calculator-card .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.calculator-card:hover .cta {
+  text-decoration: underline;
+}
+
+.calculator-card.coming-soon {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.calculator-card.coming-soon:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-border);
+}
+
+.calculator-card.coming-soon .cta {
+  color: var(--color-text-muted);
+}
+
+/* Info Note */
+.info-note {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-size: 0.875rem;
+  color: #1E40AF;
+  text-align: center;
 }
 
 /* Contact Form */

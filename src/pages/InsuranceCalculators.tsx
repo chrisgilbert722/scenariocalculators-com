@@ -1,5 +1,38 @@
 import { Link } from 'react-router-dom';
 
+const calculators = [
+  {
+    name: 'Car Insurance Cost Estimator',
+    description: 'Estimate auto insurance premiums based on driver age, vehicle type, coverage level, and location.',
+    url: 'https://car-insurance-cost-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Homeowners Insurance Estimator',
+    description: 'Calculate estimated home insurance costs based on property value, location, and coverage options.',
+    url: 'https://homeowners-insurance-cost-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Renters Insurance Estimator',
+    description: 'Estimate renters insurance premiums based on personal property value and liability coverage needs.',
+    url: 'https://renters-insurance-cost-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Life Insurance Needs Calculator',
+    description: 'Determine how much life insurance coverage you may need based on income, debts, and family obligations.',
+    url: 'https://life-insurance-need-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Auto Insurance Savings Estimator',
+    description: 'Estimate potential savings from different auto insurance discounts and coverage adjustments.',
+    url: 'https://auto-insurance-premium-savings-estimator-2026.vercel.app',
+    available: true
+  }
+];
+
 export default function InsuranceCalculators() {
   return (
     <>
@@ -16,6 +49,10 @@ export default function InsuranceCalculators() {
       <div className="page-content">
         <Link to="/" className="back-link">&larr; Back to Home</Link>
 
+        <div className="info-note">
+          Calculators open on their own dedicated sites for accuracy and performance.
+        </div>
+
         <h2>Understanding Insurance Costs</h2>
         <p>
           Insurance premiums depend on many factors including coverage levels, deductibles, location,
@@ -24,28 +61,23 @@ export default function InsuranceCalculators() {
         </p>
 
         <h2>Available Calculators</h2>
-        <ul className="calculator-list">
-          <li>
-            <strong>Car Insurance Cost Estimator</strong>
-            <span>Estimate auto insurance premiums based on driver age, vehicle type, coverage level, and location.</span>
-          </li>
-          <li>
-            <strong>Homeowners Insurance Estimator</strong>
-            <span>Calculate estimated home insurance costs based on property value, location, and coverage options.</span>
-          </li>
-          <li>
-            <strong>Renters Insurance Estimator</strong>
-            <span>Estimate renters insurance premiums based on personal property value and liability coverage needs.</span>
-          </li>
-          <li>
-            <strong>Life Insurance Needs Calculator</strong>
-            <span>Determine how much life insurance coverage you may need based on income, debts, and family obligations.</span>
-          </li>
-          <li>
-            <strong>Health Insurance Premium Estimator</strong>
-            <span>Estimate monthly health insurance costs based on plan type, coverage level, and household size.</span>
-          </li>
-        </ul>
+        <div className="calculator-list">
+          {calculators.map((calc) => (
+            <a
+              key={calc.name}
+              href={calc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`calculator-card ${!calc.available ? 'coming-soon' : ''}`}
+            >
+              <strong>{calc.name}</strong>
+              <span>{calc.description}</span>
+              <span className="cta">
+                {calc.available ? 'Open Calculator →' : 'Coming Soon'}
+              </span>
+            </a>
+          ))}
+        </div>
 
         <h2>Factors That Affect Insurance Premiums</h2>
         <p>

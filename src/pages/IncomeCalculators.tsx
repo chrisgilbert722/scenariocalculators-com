@@ -1,5 +1,38 @@
 import { Link } from 'react-router-dom';
 
+const calculators = [
+  {
+    name: 'Take Home Pay Calculator',
+    description: 'Estimate your net pay after federal taxes, state taxes, FICA, and pre-tax deductions like 401(k) contributions.',
+    url: 'https://take-home-pay-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Salary to Hourly Calculator',
+    description: 'Convert annual salary to hourly rate, or calculate annual earnings from an hourly wage.',
+    url: 'https://salary-to-hourly-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Overtime Pay Calculator',
+    description: 'Calculate overtime earnings based on regular hourly rate, overtime hours, and applicable overtime multipliers.',
+    url: 'https://overtime-pay-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Bonus Tax Estimator',
+    description: 'Estimate how much of your bonus you\'ll actually receive after supplemental wage tax withholding.',
+    url: 'https://bonus-tax-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Paycheck Frequency Calculator',
+    description: 'Compare weekly, bi-weekly, semi-monthly, and monthly pay schedules to understand annual differences.',
+    url: 'https://paycheck-frequency-calculator-2026.vercel.app',
+    available: true
+  }
+];
+
 export default function IncomeCalculators() {
   return (
     <>
@@ -16,6 +49,10 @@ export default function IncomeCalculators() {
       <div className="page-content">
         <Link to="/" className="back-link">&larr; Back to Home</Link>
 
+        <div className="info-note">
+          Calculators open on their own dedicated sites for accuracy and performance.
+        </div>
+
         <h2>Understanding Your Income</h2>
         <p>
           Your gross salary is only part of the picture. Federal and state taxes, Social Security,
@@ -25,28 +62,23 @@ export default function IncomeCalculators() {
         </p>
 
         <h2>Available Calculators</h2>
-        <ul className="calculator-list">
-          <li>
-            <strong>Take Home Pay Calculator</strong>
-            <span>Estimate your net pay after federal taxes, state taxes, FICA, and pre-tax deductions like 401(k) contributions.</span>
-          </li>
-          <li>
-            <strong>Salary to Hourly Calculator</strong>
-            <span>Convert annual salary to hourly rate, or calculate annual earnings from an hourly wage.</span>
-          </li>
-          <li>
-            <strong>Overtime Pay Calculator</strong>
-            <span>Calculate overtime earnings based on regular hourly rate, overtime hours, and applicable overtime multipliers.</span>
-          </li>
-          <li>
-            <strong>Bonus Tax Calculator</strong>
-            <span>Estimate how much of your bonus you'll actually receive after supplemental wage tax withholding.</span>
-          </li>
-          <li>
-            <strong>Paycheck Frequency Calculator</strong>
-            <span>Compare weekly, bi-weekly, semi-monthly, and monthly pay schedules to understand annual differences.</span>
-          </li>
-        </ul>
+        <div className="calculator-list">
+          {calculators.map((calc) => (
+            <a
+              key={calc.name}
+              href={calc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`calculator-card ${!calc.available ? 'coming-soon' : ''}`}
+            >
+              <strong>{calc.name}</strong>
+              <span>{calc.description}</span>
+              <span className="cta">
+                {calc.available ? 'Open Calculator →' : 'Coming Soon'}
+              </span>
+            </a>
+          ))}
+        </div>
 
         <h2>How Income Calculations Work</h2>
         <p>

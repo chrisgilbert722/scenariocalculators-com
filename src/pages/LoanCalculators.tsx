@@ -1,5 +1,44 @@
 import { Link } from 'react-router-dom';
 
+const calculators = [
+  {
+    name: 'Mortgage Payment Calculator',
+    description: 'Calculate monthly mortgage payments including principal, interest, taxes, and insurance (PITI).',
+    url: 'https://mortgage-payment-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Auto Loan Calculator',
+    description: 'Estimate monthly car payments based on vehicle price, down payment, interest rate, and loan term.',
+    url: 'https://auto-loan-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Student Loan Payment Estimator',
+    description: 'Project monthly payments for federal and private student loans under different repayment plans.',
+    url: 'https://student-loan-payment-estimator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Personal Loan Calculator',
+    description: 'Calculate payments and total interest for unsecured personal loans.',
+    url: 'https://personal-loan-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Debt Payoff Calculator',
+    description: 'Create a debt payoff plan using avalanche or snowball methods to become debt-free faster.',
+    url: 'https://debt-payoff-calculator-2026.vercel.app',
+    available: true
+  },
+  {
+    name: 'Mortgage Refinance Calculator',
+    description: 'Determine whether refinancing your mortgage could save you money over time.',
+    url: 'https://mortgage-refinance-savings-calculator-2026.vercel.app',
+    available: true
+  }
+];
+
 export default function LoanCalculators() {
   return (
     <>
@@ -16,6 +55,10 @@ export default function LoanCalculators() {
       <div className="page-content">
         <Link to="/" className="back-link">&larr; Back to Home</Link>
 
+        <div className="info-note">
+          Calculators open on their own dedicated sites for accuracy and performance.
+        </div>
+
         <h2>Making Informed Borrowing Decisions</h2>
         <p>
           Whether you're buying a home, financing a car, or consolidating debt, understanding the
@@ -24,32 +67,23 @@ export default function LoanCalculators() {
         </p>
 
         <h2>Available Calculators</h2>
-        <ul className="calculator-list">
-          <li>
-            <strong>Mortgage Payment Calculator</strong>
-            <span>Calculate monthly mortgage payments including principal, interest, taxes, and insurance (PITI).</span>
-          </li>
-          <li>
-            <strong>Auto Loan Calculator</strong>
-            <span>Estimate monthly car payments based on vehicle price, down payment, interest rate, and loan term.</span>
-          </li>
-          <li>
-            <strong>Student Loan Payment Estimator</strong>
-            <span>Project monthly payments for federal and private student loans under different repayment plans.</span>
-          </li>
-          <li>
-            <strong>Personal Loan Calculator</strong>
-            <span>Calculate payments and total interest for unsecured personal loans.</span>
-          </li>
-          <li>
-            <strong>Debt Payoff Calculator</strong>
-            <span>Create a debt payoff plan using avalanche or snowball methods to become debt-free faster.</span>
-          </li>
-          <li>
-            <strong>Refinance Calculator</strong>
-            <span>Determine whether refinancing your mortgage or auto loan could save you money.</span>
-          </li>
-        </ul>
+        <div className="calculator-list">
+          {calculators.map((calc) => (
+            <a
+              key={calc.name}
+              href={calc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`calculator-card ${!calc.available ? 'coming-soon' : ''}`}
+            >
+              <strong>{calc.name}</strong>
+              <span>{calc.description}</span>
+              <span className="cta">
+                {calc.available ? 'Open Calculator →' : 'Coming Soon'}
+              </span>
+            </a>
+          ))}
+        </div>
 
         <h2>Key Loan Concepts</h2>
         <p>
